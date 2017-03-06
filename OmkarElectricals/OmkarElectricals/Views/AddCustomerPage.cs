@@ -7,7 +7,6 @@ namespace OmkarElectricals.Views
         public AddCustomerPage()
         {
             Title = "";
-
             Entry customerNameEntry = new Entry
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
