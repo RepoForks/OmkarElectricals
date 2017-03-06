@@ -47,5 +47,10 @@ namespace OmkarElectricals.Views
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }
