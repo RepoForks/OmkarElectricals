@@ -6,6 +6,7 @@ namespace OmkarElectricals.Views
     {
         public LoginPage()
         {
+            Title = "Omkar Electricals";
             Label title = new Label
             {
                 Text = "Welcome to Omkar Electricals",
@@ -38,6 +39,25 @@ namespace OmkarElectricals.Views
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 400
             };
+            loginButton.Clicked += async (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(usernameEntry.Text))
+                {
+                    await DisplayAlert("Omkar Electricals", "Please enter username", "OK");
+                }
+                else if (string.IsNullOrWhiteSpace(passwordEntry.Text))
+                {
+                    await DisplayAlert("Omkar Electricals", "Please enter password", "OK");
+                }
+                else if(usernameEntry.Text == "omkar" && passwordEntry.Text == "mitesh")
+                {
+                    App.Current.MainPage = new AddSelectCustomerPage();
+                }
+                else
+                {
+                    await DisplayAlert("Omkar Electricals", "Please check username & password", "OK");
+                }
+            };
 
             Content = new StackLayout
             {
@@ -46,11 +66,6 @@ namespace OmkarElectricals.Views
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
         }
     }
 }

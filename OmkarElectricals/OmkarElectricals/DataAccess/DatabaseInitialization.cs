@@ -1,4 +1,5 @@
 ﻿using OmkarElectricals.DataAccess.Interfaces;
+using OmkarElectricals.Models;
 using SQLite.Net.Async;
 using System;
 using System.Threading.Tasks;
@@ -23,9 +24,7 @@ namespace OmkarElectricals.DataAccess
         {
             Type[] tables = new Type[]
             {
-                //typeof(LocalisedResourceEntity),
-                //typeof(UserEntity),
-                //typeof(ProviderEntity)
+                typeof(Customer)
             };
             //CreateTablesAsync will only create tables if not exists.
             //check https://github.com/praeclarum/sqlite-net/blob/61914587a484c6273b7f15ab9cfbf84faf4010eb/src/SQLite.cs#L407

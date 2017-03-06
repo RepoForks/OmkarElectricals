@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.HockeyApp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace OmkarElectricals.Windows
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            HockeyClient.Current.Configure("00af44ae97864b32af4110571c59c0a7");
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace OmkarElectricals.Windows
         /// search results, and so forth.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -86,6 +88,7 @@ namespace OmkarElectricals.Windows
 
             // Ensure the current window is active
             Window.Current.Activate();
+            await HockeyClient.Current.SendCrashesAsync();
         }
 
         /// <summary>

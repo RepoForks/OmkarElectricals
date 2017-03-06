@@ -7,6 +7,7 @@ namespace OmkarElectricals.Views
     {
         public InitializationPage()
         {
+            Title = "Omkar Electricals";
             Content = new ActivityIndicator
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
