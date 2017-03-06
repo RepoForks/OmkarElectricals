@@ -7,7 +7,7 @@ namespace OmkarElectricals.Views
     {
         public InitializationPage()
         {
-            Title = "Omkar Electricals";
+            Title = "";
             Content = new ActivityIndicator
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -20,8 +20,11 @@ namespace OmkarElectricals.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            var a = 5;
+            var b = 0;
+            var c = a / b;
             await new DatabaseInitialization().InitializeTablesAsync();
-            App.Current.MainPage = new LoginPage();
+            App.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

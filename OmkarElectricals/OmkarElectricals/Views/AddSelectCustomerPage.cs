@@ -6,8 +6,7 @@ namespace OmkarElectricals.Views
     {
         public AddSelectCustomerPage()
         {
-            Title = "Omkar Electricals";
-
+            Title = "";
             Label selectCustomerLabel = new Label
             {
                 Text = "Select Customer",
@@ -32,6 +31,10 @@ namespace OmkarElectricals.Views
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Button))
+            };
+            addNewCustomerButton.Clicked += (s, e) =>
+            {
+                Navigation.PushAsync(new AddCustomerPage());
             };
 
             Content = new StackLayout

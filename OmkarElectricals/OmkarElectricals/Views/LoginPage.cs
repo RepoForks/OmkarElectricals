@@ -6,7 +6,7 @@ namespace OmkarElectricals.Views
     {
         public LoginPage()
         {
-            Title = "Omkar Electricals";
+            Title = "";
             Label title = new Label
             {
                 Text = "Welcome to Omkar Electricals",
@@ -51,7 +51,7 @@ namespace OmkarElectricals.Views
                 }
                 else if(usernameEntry.Text == "omkar" && passwordEntry.Text == "mitesh")
                 {
-                    App.Current.MainPage = new AddSelectCustomerPage();
+                    App.Current.MainPage = new NavigationPage(new AddSelectCustomerPage());
                 }
                 else
                 {
