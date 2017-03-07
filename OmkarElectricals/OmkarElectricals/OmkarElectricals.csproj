@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Behavior\MaxLengthValidatorBehavior.cs" />
+    <Compile Include="Behavior\NumberValidationBehavior.cs" />
     <Compile Include="DataAccess\CustomerDatabase.cs" />
     <Compile Include="DataAccess\DatabaseInitialization.cs" />
     <Compile Include="DataAccess\Interfaces\ISQLite.cs" />

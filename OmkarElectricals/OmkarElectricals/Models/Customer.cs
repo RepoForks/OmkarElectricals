@@ -8,7 +8,7 @@ namespace OmkarElectricals.Models
         [PrimaryKey, AutoIncrement]
         public long CustomerId { get; set; }
         public string CustomerName { get; set; }
-        public int CustomerMobileNumber { get; set; }
+        public long CustomerMobileNumber { get; set; }
         public string CustomerAddress { get; set; }
     }
 }

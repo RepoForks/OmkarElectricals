@@ -29,6 +29,7 @@ namespace OmkarElectricals.DataAccess
             }
             catch (Exception ex)
             {
+                HockeyApp.MetricsManager.TrackEvent("Something went wrong while fetching customer to database. GetAllCustomerAsync()");
                 return null;
             }
         }
@@ -46,6 +47,7 @@ namespace OmkarElectricals.DataAccess
             }
             catch (Exception ex)
             {
+                HockeyApp.MetricsManager.TrackEvent("Something went wrong while inserting customer to database. InsertCustomerAsync()");
                 return false;
             }
         }
@@ -63,6 +65,7 @@ namespace OmkarElectricals.DataAccess
             }
             catch (Exception ex)
             {
+                HockeyApp.MetricsManager.TrackEvent("Something went wrong while updating customer to database. UpdateCustomerAsync()");
                 return false;
             }
         }
@@ -80,6 +83,7 @@ namespace OmkarElectricals.DataAccess
             }
             catch (Exception ex)
             {
+                HockeyApp.MetricsManager.TrackEvent("Something went wrong while deleting customer to database. DeleteCustomerAsync()");
                 return false;
             }
         }
