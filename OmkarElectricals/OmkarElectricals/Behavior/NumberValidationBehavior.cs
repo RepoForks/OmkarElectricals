@@ -18,8 +18,8 @@ namespace OmkarElectricals.Behavior
 
         void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            int result;
-            bool isValid = int.TryParse(args.NewTextValue, out result);
+            long result;
+            bool isValid = long.TryParse(args.NewTextValue, out result);
             ((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
         }
     }
