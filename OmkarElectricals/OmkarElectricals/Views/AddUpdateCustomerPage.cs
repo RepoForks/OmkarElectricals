@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace OmkarElectricals.Views
 {
-    public class AddCustomerPage : ContentPage
+    public class AddUpdateCustomerPage : ContentPage
     {
-        public AddCustomerPage()
+        public AddUpdateCustomerPage(string customerName = "", string customerAddress = "", string customerMobileNumber = "")
         {
             Title = "";
             Label addNewCustomerLabel = new Label
@@ -23,7 +23,9 @@ namespace OmkarElectricals.Views
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 400,
-                Placeholder = "Enter Enter customer name"
+                Placeholder = "Enter Enter customer name",
+                Text = customerName,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Entry))
             };
 
             Entry customerAddressEntry = new Entry
@@ -31,7 +33,9 @@ namespace OmkarElectricals.Views
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 400,
-                Placeholder = "Enter customer address"
+                Placeholder = "Enter customer address",
+                Text = customerAddress,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Entry))
             };
 
             Entry customerMobileNumberEntry = new Entry
@@ -40,17 +44,27 @@ namespace OmkarElectricals.Views
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 400,
                 Keyboard = Keyboard.Telephone,
-                Placeholder = "Enter customer mobile number"
+                Placeholder = "Enter customer mobile number",
+                Text = customerMobileNumber,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Entry))
             };
             customerMobileNumberEntry.Behaviors.Add(new NumberValidationBehavior());
 
             Button addCustomerButton = new Button
             {
-                Text = "Add Customer",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 400
+                WidthRequest = 400,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button))
             };
+            if (string.IsNullOrWhiteSpace(customerName))
+            {
+                addCustomerButton.Text = "Add Customer";
+            }
+            else
+            {
+                addCustomerButton.Text = "Update Customer";
+            }
             addCustomerButton.Clicked += async (s, e) =>
             {
                 if (string.IsNullOrWhiteSpace(customerNameEntry.Text))
@@ -74,7 +88,7 @@ namespace OmkarElectricals.Views
                     //Insert customer to db
                     using (CustomerDatabase customerDatabase = new CustomerDatabase())
                     {
-                        bool status = await customerDatabase.InsertCustomerAsync(new Customer { CustomerName = customerNameEntry.Text.Trim(), CustomerAddress = customerAddressEntry.Text.Trim(), CustomerMobileNumber = long.Parse(customerMobileNumberEntry.Text.Trim()) });
+                        bool status = await customerDatabase.InsertOrUpdateCustomerAsync(new Customer { CustomerName = customerNameEntry.Text.Trim(), CustomerAddress = customerAddressEntry.Text.Trim(), CustomerMobileNumber = long.Parse(customerMobileNumberEntry.Text.Trim()) });
                         if (status)
                         {
                             await DisplayAlert("Omkar Electricals", "Customer record inserted successfully", "OK");

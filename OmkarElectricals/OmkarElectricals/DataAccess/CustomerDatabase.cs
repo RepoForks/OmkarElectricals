@@ -53,6 +53,24 @@ namespace OmkarElectricals.DataAccess
         }
 
         /// <summary>
+        /// Insert or update new customer
+        /// </summary>
+        /// <returns>Insert/Update status</returns>
+        public async Task<bool> InsertOrUpdateCustomerAsync(Customer customer)
+        {
+            try
+            {
+                await _asyncConnection.InsertOrReplaceAsync(customer);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                HockeyApp.MetricsManager.TrackEvent("Something went wrong while inserting or updating customer to database. InsertOrUpdateCustomerAsync()");
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Update existing customer
         /// </summary>
         /// <returns>Update status</returns>

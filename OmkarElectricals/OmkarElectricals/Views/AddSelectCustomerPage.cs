@@ -24,6 +24,7 @@ namespace OmkarElectricals.Views
             _selectCustomerPicker = new Picker
             {
                 WidthRequest = 400,
+                HeightRequest = 50
             };
 
             Button continueButton = new Button
@@ -67,7 +68,7 @@ namespace OmkarElectricals.Views
             };
             addNewCustomerButton.Clicked += (s, e) =>
             {
-                Navigation.PushAsync(new AddCustomerPage());
+                Navigation.PushAsync(new AddUpdateCustomerPage());
             };
 
             Content = new StackLayout
@@ -84,10 +85,10 @@ namespace OmkarElectricals.Views
             base.OnAppearing();
             using(CustomerDatabase customerDatabase = new CustomerDatabase())
             {
-                List<string> customerList = (await customerDatabase.GetAllCustomerAsync()).Select(c=>c.CustomerName).ToList();
-                foreach(string customer in customerList)
+                List<Customer> customerList = (await customerDatabase.GetAllCustomerAsync());
+                foreach(Customer customer in customerList)
                 {
-                    _selectCustomerPicker.Items.Add(customer);
+                    _selectCustomerPicker.Items.Add(customer.CustomerName);
                 }
             }
         }

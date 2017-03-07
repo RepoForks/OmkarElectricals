@@ -20,7 +20,8 @@ namespace OmkarElectricals.Views
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 400,
-                Placeholder = "Enter Username"
+                Placeholder = "Enter Username",
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Entry))
             };
 
             Entry passwordEntry = new Entry
@@ -29,7 +30,8 @@ namespace OmkarElectricals.Views
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 400,
-                Placeholder = "Enter Password"
+                Placeholder = "Enter Password",
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Entry))
             };
 
             Button loginButton = new Button
@@ -37,7 +39,8 @@ namespace OmkarElectricals.Views
                 Text = "Login",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 400
+                WidthRequest = 400,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button))
             };
             loginButton.Clicked += async (s, e) =>
             {
